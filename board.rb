@@ -34,7 +34,7 @@ class Board
 	end
 
 	def tie?
-		winner == nil && full?
+		winner? == nil && full?
 	end
 
 	def gameover?
@@ -56,13 +56,15 @@ class Board
 		end
 
 		diagonals.each do |diagonal|
-			if row.uniq.length == 1
+			if diagonal.uniq.length == 1
 				winner = diagonal.first
 			end
 		end
 
 		return winner
 	end
+
+	
 
 	def place_marker
 

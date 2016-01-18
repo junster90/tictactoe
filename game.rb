@@ -2,7 +2,7 @@ class Game
 
 	def initialize
 		@board = Board.new
-		@player = nil
+		@human = nil
 		@computer = nil
 		@player1 = nil
 		@player2 = nil
@@ -12,17 +12,18 @@ class Game
 		puts "Welcome to Tic-Tac-Toe. Prepare to be destroyed. :)"
 		choose_marker
 		randomize_starting_player
-		print_board
+		puts "#{@player1.marker} starts first."
+		play_game
 	end
 
 	def choose_marker
 		puts "Which marker would you like to use: X or O?"
 		choice = gets.chomp.upcase
 		if choice == "X"
-			@player = Player.new("X")
+			@human = Player.new("X")
 			@computer = AI.new("O")
 		elsif choice == "O"
-			@player = Player.new("O")
+			@human = Player.new("O")
 			@computer = AI.new("X")
 		else
 			puts "That is not a valid marker."
@@ -31,7 +32,7 @@ class Game
 	end
 
 	def randomize_starting_player
-		players = [@player, @computer].shuffle
+		players = [@human, @computer].shuffle
 		@player1 = players.first
 		@player2 = players.last
 	end
@@ -49,10 +50,23 @@ class Game
 	end
 
 	def play_game
-		until board.gameover?
+		until @board.gameover?
 			take_turn(@player1)
 			take_turn(@player2)
 		end
+		puts "Game over."
 	end
 
+	def take_turn(player)
+		if player == @human
+			puts "Your turn."
+			print_board
+			puts "Where would you like to place your marker?"
+			choice = gets.chomp
+
+
+		elsif player == @computer
+			puts "Computer's turn."
+		end
+	end
 end
