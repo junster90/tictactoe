@@ -4,13 +4,15 @@ class Game
 		@board = Board.new
 		@player = nil
 		@computer = nil
+		@player1 = nil
+		@player2 = nil
 	end
 
 	def start
 		puts "Welcome to Tic-Tac-Toe. Prepare to be destroyed. :)"
 		choose_marker
-		starting_player = randomize_starting_player
-		
+		randomize_starting_player
+		print_board
 	end
 
 	def choose_marker
@@ -29,28 +31,28 @@ class Game
 	end
 
 	def randomize_starting_player
-		[@player, @computer].sample
+		players = [@player, @computer].shuffle
+		@player1 = players.first
+		@player2 = players.last
 	end
 
 	def print_board
 		puts " --- --- --- "
-		@board.row[:top].each do |cell|
-			print "| #{cell} "
+		@board.rows.each do |row|
+			row.each do |cell|
+				print "| #{cell} "
+			end
+		
+			print "| \n"
+			puts " --- --- --- "
 		end
-		print "| \n"
-		puts " --- --- --- "
+	end
 
-		@board.row[:middle].each do |cell|
-			print "| #{cell} "
+	def play_game
+		until board.gameover?
+			take_turn(@player1)
+			take_turn(@player2)
 		end
-		print "| \n"
-		puts " --- --- --- "
-
-		@board.row[:bottom].each do |cell|
-			print "| #{cell} "
-		end
-		print "| \n"
-		puts " --- --- --- "
 	end
 
 end
