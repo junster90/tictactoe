@@ -52,8 +52,10 @@ class Game
 	def play_game
 		until @board.gameover?
 			take_turn(@player1)
+			break if @board.gameover?
 			take_turn(@player2)
 		end
+		print_board
 		puts "Game over."
 	end
 
