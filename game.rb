@@ -60,13 +60,22 @@ class Game
 	def take_turn(player)
 		if player == @human
 			puts "Your turn."
-			print_board
-			puts "Where would you like to place your marker?"
-			choice = gets.chomp
-
+			take_turn_input
 
 		elsif player == @computer
 			puts "Computer's turn."
+		end
+	end
+
+	def take_turn_input
+		print_board
+		puts "Where would you like to place your marker?"
+		choice = gets.chomp.to_i
+		if @board.is_valid_input?(choice)
+			puts "you have chosen #{choice}!"
+		else
+			puts "That is not a valid choice!"
+			take_turn_input
 		end
 	end
 end

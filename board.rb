@@ -64,7 +64,17 @@ class Board
 		return winner
 	end
 
-	
+	def is_valid_input?(choice)
+		available_cells.include?(choice)
+	end
+
+	def available_cells
+		available_cells = []
+		@cells.each do |cell|
+			available_cells << cell if cell.is_a?(Integer)
+		end
+		return available_cells
+	end
 
 	def place_marker
 
