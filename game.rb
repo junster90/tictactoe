@@ -1,5 +1,7 @@
 class Game
 
+	attr_reader :player1, :player2
+
 	def initialize
 		@board = Board.new
 		@human = nil
@@ -66,8 +68,8 @@ class Game
 		elsif player == @computer
 			puts "Computer's turn."
 			puts "Computer is thinking..."
-			computer_move = @computer.minimax(@board)
-			@board.place_marker(@computer,computer_move)
+			computer_move = @computer.minimax(@board,@player1,@player2)
+			# @board.place_marker(@computer,computer_move)
 		end
 	end
 
