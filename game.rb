@@ -1,7 +1,5 @@
 class Game
-
-	attr_reader :player1, :player2
-
+	
 	def initialize
 		@board = Board.new
 		@human = nil
