@@ -63,9 +63,11 @@ class Game
 		if player == @human
 			puts "Your turn."
 			take_turn_input
-
 		elsif player == @computer
 			puts "Computer's turn."
+			puts "Computer is thinking..."
+			computer_move = @computer.minimax(@board)
+			@board.place_marker(@computer,computer_move)
 		end
 	end
 
