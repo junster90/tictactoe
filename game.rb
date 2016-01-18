@@ -72,7 +72,7 @@ class Game
 		puts "Where would you like to place your marker?"
 		choice = gets.chomp.to_i
 		if @board.is_valid_input?(choice)
-			puts "you have chosen #{choice}!"
+			@board.place_marker(@human,choice)
 		else
 			puts "That is not a valid choice!"
 			take_turn_input

@@ -76,8 +76,8 @@ class Board
 		return available_cells
 	end
 
-	def place_marker
-
+	def place_marker(player,cell)
+		@cells[cell-1] = player.marker
 	end
 
 end
