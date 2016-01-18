@@ -68,8 +68,8 @@ class Game
 		elsif player == @computer
 			puts "Computer's turn."
 			puts "Computer is thinking..."
-			computer_move = @computer.minimax(@board,@player1,@player2)
-			# @board.place_marker(@computer,computer_move)
+			computer_move = @computer.negamax(@board,@player1,@player2)
+			@board.place_marker(@computer,computer_move)
 		end
 	end
 
