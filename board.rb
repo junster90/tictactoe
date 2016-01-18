@@ -80,4 +80,8 @@ class Board
 		@cells[cell-1] = player.marker
 	end
 
+	def reset_cell(cell)
+		@cells[cell-1] = cell
+	end
+
 end
