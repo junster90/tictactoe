@@ -10,7 +10,7 @@ class Game
 		puts "Welcome to Tic-Tac-Toe. Prepare to be destroyed. :)"
 		choose_marker
 		starting_player = randomize_starting_player
-
+		
 	end
 
 	def choose_marker
@@ -30,6 +30,27 @@ class Game
 
 	def randomize_starting_player
 		[@player, @computer].sample
+	end
+
+	def print_board
+		puts " --- --- --- "
+		@board.row[:top].each do |cell|
+			print "| #{cell} "
+		end
+		print "| \n"
+		puts " --- --- --- "
+
+		@board.row[:middle].each do |cell|
+			print "| #{cell} "
+		end
+		print "| \n"
+		puts " --- --- --- "
+
+		@board.row[:bottom].each do |cell|
+			print "| #{cell} "
+		end
+		print "| \n"
+		puts " --- --- --- "
 	end
 
 end
