@@ -58,6 +58,13 @@ class Game
 			take_turn(@player2)
 		end
 		print_board
+		if @board.winner? == @human.marker
+			puts "Congratulations, you win."
+		elsif @board.winner? == @computer.marker
+			puts "You lose. #rekt "
+		elsif @board.tie?
+			puts "It's a draw."
+		end
 		puts "Game over."
 	end
 
